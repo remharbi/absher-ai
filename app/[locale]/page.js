@@ -23,10 +23,10 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#f5f6f7] pb-16">
-      <section className="mx-auto max-w-6xl px-6 py-8">
-        <div className="grid grid-cols-[240px,1fr] gap-6">
+      <section className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
+        <div className="grid grid-cols-1 gap-6">
           <div className="flex flex-col gap-5">
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-5">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
               {quickServices.map((serviceKey) => (
                 <article
                   key={serviceKey}
@@ -47,7 +47,7 @@ export default function Home() {
                 <span>{t("otherServices.title")}</span>
                 <span className="h-px flex-1 bg-slate-200" />
               </div>
-              <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-5">
+              <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
                 {otherServices.map((service) => (
                   <article
                     key={service.key}
