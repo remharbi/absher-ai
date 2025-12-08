@@ -6,5 +6,84 @@
   "deploy": "انشر الآن",
   "docs": "التوثيق",
   "languageLabel": "اللغة:",
-  "switchLocale": "English"
+  "switchLocale": "English",
+  "header": {
+    "profileHelper": "الملف الشخصي",
+    "dashboard": "لوحة التحكم",
+    "update-info": "تحديث بيانات المستخدم",
+    "notifications": "الإشعارات",
+    "service-guide": "دليل الخدمات",
+    "language": "English",
+    "logout": "تسجيل الخروج"
+  },
+  "sidebar": {
+    "electronicServices": "الخدمات الإلكترونية",
+    "authorization": "التفويض",
+    "surveys": "استطلاعات أبشر",
+    "payments": "المدفوعات الحكومية"
+  },
+  "search": {
+    "label": "بحث",
+    "placeholder": "اكتب للبحث"
+  },
+  "quickServices": {
+    "myServices": "خدماتي",
+    "vehicles": "المركبات",
+    "familyMembers": "أفراد الأسرة",
+    "workers": "العمالة",
+    "appointments": "المواعيد"
+  },
+  "otherServices": {
+    "title": "خدمات أخرى",
+    "badge": "جديد",
+    "criminalRecord": "شهادة سجل جنائي",
+    "absherReports": "تقارير أبشر",
+    "vehicleTransfer": "نقل ملكية مركبة",
+    "plateAuction": "مزاد اللوحات الإلكتروني",
+    "serviceSuspension": "تعليق الخدمات ومنع السفر"
+  },
+  "footer": {
+    "socialMedia": "وسائل التواصل الاجتماعي",
+    "social": {
+      "youtube": "يوتيوب",
+      "x": "إكس",
+      "facebook": "فيسبوك",
+      "snapchat": "سناب شات"
+    },
+    "accessibilityTools": "أدوات تسهيل الاستخدام",
+    "accessibility": {
+      "small": "A-",
+      "large": "A+",
+      "view": "عرض"
+    },
+    "aboutTitle": "عن أبشر",
+    "about": {
+      "aboutAbsher": "عن أبشر",
+      "privacyPolicy": "سياسة الخصوصية",
+      "terms": "شروط الاستخدام",
+      "news": "الأخبار",
+      "sla": "اتفاقية مستوى الخدمة",
+      "accessibility": "إمكانية الوصول"
+    },
+    "contactTitle": "التواصل والدعم",
+    "contact": {
+      "contact": "تواصل معنا",
+      "corruption": "الإبلاغ عن الفساد (نزاهة)",
+      "faqs": "الأسئلة الشائعة",
+      "channels": "قنوات الخدمة",
+      "idActivation": "قنوات تفعيل الهوية الوطنية",
+      "registration": "التسجيل والاشتراك"
+    },
+    "linksTitle": "روابط مهمة",
+    "links": {
+      "interior": "بوابة وزارة الداخلية",
+      "nationalPortal": "البوابة الوطنية الموحدة",
+      "aiStrategy": "الاستراتيجية الوطنية للبيانات والذكاء الاصطناعي",
+      "openData": "منصة البيانات المفتوحة",
+      "eParticipation": "منصة المشاركة الإلكترونية",
+      "consultation": "منصة الاستشارات العامة"
+    },
+    "callCenterLabel": "مركز الاتصال",
+    "callCenterNumber": "920020405"
+  }
 }

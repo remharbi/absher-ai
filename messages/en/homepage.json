@@ -6,5 +6,84 @@
   "deploy": "Deploy Now",
   "docs": "Documentation",
   "languageLabel": "Language:",
-  "switchLocale": "العربية"
+  "switchLocale": "العربية",
+  "header": {
+    "profileHelper": "Profile",
+    "dashboard": "Dashboard",
+    "update-info": "Update User Info",
+    "notifications": "Notifications",
+    "service-guide": "Services Guide",
+    "language": "العربية",
+    "logout": "Logout"
+  },
+  "sidebar": {
+    "electronicServices": "Electronic Services",
+    "authorization": "Authorization",
+    "surveys": "Absher Surveys",
+    "payments": "Government Payment"
+  },
+  "search": {
+    "label": "Search",
+    "placeholder": "Type to Search"
+  },
+  "quickServices": {
+    "myServices": "My Services",
+    "vehicles": "Vehicles",
+    "familyMembers": "Family Members",
+    "workers": "Workers",
+    "appointments": "Appointments"
+  },
+  "otherServices": {
+    "title": "Other Services",
+    "badge": "New",
+    "criminalRecord": "Criminal Record Certificate Report",
+    "absherReports": "ABSHER Reports",
+    "vehicleTransfer": "Vehicle Ownership Transfer",
+    "plateAuction": "Online Plate Auction",
+    "serviceSuspension": "Service Suspension and Travel Restrictions"
+  },
+  "footer": {
+    "socialMedia": "Social Media",
+    "social": {
+      "youtube": "YouTube",
+      "x": "X",
+      "facebook": "Facebook",
+      "snapchat": "Snapchat"
+    },
+    "accessibilityTools": "Accessibility Tools",
+    "accessibility": {
+      "small": "A-",
+      "large": "A+",
+      "view": "View"
+    },
+    "aboutTitle": "About Absher",
+    "about": {
+      "aboutAbsher": "About Absher",
+      "privacyPolicy": "Privacy Policy",
+      "terms": "Terms of Use",
+      "news": "News",
+      "sla": "Service level agreement",
+      "accessibility": "Accessibility"
+    },
+    "contactTitle": "Contact and support",
+    "contact": {
+      "contact": "Contact Us",
+      "corruption": "Report Corruption (Nazaha)",
+      "faqs": "FAQs",
+      "channels": "Service channels",
+      "idActivation": "National ID Activation Channels",
+      "registration": "Registration and Subscription"
+    },
+    "linksTitle": "Important Links",
+    "links": {
+      "interior": "Ministry of Interior Portal",
+      "nationalPortal": "National Unified Portal",
+      "aiStrategy": "National Strategy for Data & AI",
+      "openData": "Open Data Platform",
+      "eParticipation": "e-Participation Portal",
+      "consultation": "Public Consultation Platform"
+    },
+    "callCenterLabel": "Call Center",
+    "callCenterNumber": "920020405"
+  }
 }

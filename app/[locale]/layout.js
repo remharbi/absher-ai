@@ -5,6 +5,7 @@ import { routing } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
 
 import "@/app/globals.css";
+import Header from "@/components/Header/Header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -50,10 +51,10 @@ export default async function RootLayout({ children, params }) {
       lang={locale}
       dir={locale === "ar" ? "rtl" : "ltr"}
       suppressHydrationWarning
-      className="h-full bg-gray-100 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased h-full bg-background text-foreground`}>
+      className="">
+      <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
+          <Header />
           <main>{children}</main>
         </NextIntlClientProvider>
       </body>

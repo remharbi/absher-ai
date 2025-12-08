@@ -24,3 +24,41 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.icons {
+  content: "";
+  background: url(../public/sprites.png) no-repeat;
+  display: inline-block;
+  vertical-align: middle;
+  width: 44px;
+  height: 44px;
+}
+
+.icon-user {
+  background-position: -474px -770px;
+  transform: scale(1.1);
+}
+
+.icon-dashboard {
+  background-position: 6px -894px;
+}
+
+.icon-language {
+  background-position: -114px -954px;
+}
+
+.icon-logout {
+  background-position: -234px -954px;
+}
+
+.icon-update-info {
+  background-position: -294px -894px;
+}
+
+.icon-notifications {
+  background-position: -174px -1132px;
+}
+
+.icon-service-guide {
+  background-position: -534px -954px;
+}
