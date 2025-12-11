@@ -3,6 +3,7 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
+import localFont from "next/font/local";
 
 import "@/app/globals.css";
 import Header from "@/components/Header/Header";
@@ -15,6 +16,12 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const kufi = localFont({
+  src: [{ path: "../fonts/NotoKufiArabic-VariableFont_wght.ttf", weight: "400", style: "normal" }],
+  variable: "--font-kufi",
+  display: "swap",
 });
 
 // Generate static params for each locale
@@ -47,12 +54,11 @@ export default async function RootLayout({ children, params }) {
     notFound();
   }
   return (
-    <html
-      lang={locale}
-      dir={locale === "ar" ? "rtl" : "ltr"}
-      suppressHydrationWarning
-      className="">
-      <body>
+    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} suppressHydrationWarning className="">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} ${kufi.variable} ${
+          locale === "ar" ? kufi.className : ""
+        } antialiased h-full bg-background text-foreground`}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Header />
           <main>{children}</main>

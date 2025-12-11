@@ -9,6 +9,7 @@ import { navList } from "@/lib/navList";
 import { useTranslations } from "next-intl";
 import LocaleSwitcher from "../LocaleSwitcher/LocaleSwitcher";
 import { useLocale } from "next-intl";
+import Link from "next/link";
 
 export default function Header() {
   const locale = useLocale();
@@ -53,12 +54,13 @@ export default function Header() {
         <div className="min-w-0">
           <div className="hidden flex-wrap items-center justify-center gap-3 sm:gap-4 md:flex">
             {navList.map((navItem) => (
-              <button
+              <Link
                 key={navItem.name}
-                className="flex flex-col items-center justify-around rounded-md border border-slate-200 border-b-2 border-b-green-300 font-bold text-slate-800 text-[11px] h-22 w-24 hover:bg-green-100">
+                href={`/${locale}/${navItem.url}`}
+                className={`hover:cursor-pointer flex flex-col items-center justify-around rounded-md border border-slate-200 border-b-2 border-b-green-300 font-bold text-slate-800 text-[11px] h-22 w-24 hover:bg-green-100`}>
                 <div className={`${navItem.icon} h-16 w-16`} />
                 <p>{t(`${navItem.name}`)}</p>
-              </button>
+              </Link>
             ))}
 
             <LocaleSwitcher />
