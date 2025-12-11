@@ -44,7 +44,7 @@
   },
   "dashboard": {
     "activeServices": {
-      "title": "Active Services",
+      "title": "Active Documents",
       "statusSynced": "Status synced",
       "labels": {
         "id": "ID",
@@ -105,6 +105,15 @@
         "showLess": "Show fewer"
       }
     }
+  },
+  "proactive": {
+    "title": "Proactive actions for you",
+    "badge": "Using AI",
+    "loading": "Preparing recommendations...",
+    "error": "Unable to load recommendations right now.",
+    "ctaText": "More details in Sabaq service",
+    "ctaAction": "Go to Sabaq",
+    "prompt": "What do you want me to help you with first?"
   },
   "footer": {
     "socialMedia": "Social Media",

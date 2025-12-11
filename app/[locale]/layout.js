@@ -7,6 +7,8 @@ import localFont from "next/font/local";
 import { headers } from "next/headers";
 import "@/app/globals.css";
 import Header from "@/components/Header/Header";
+import { ProactiveProvider } from "@/components/ProactiveProvider/ProactiveProvider";
+import { UserDataProvider } from "@/components/UserDataProvider/UserDataProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -60,8 +62,12 @@ export default async function RootLayout({ children, params }) {
           locale === "ar" ? kufi.className : ""
         } antialiased h-full bg-background text-foreground`}>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <Header />
-          <main>{children}</main>
+          <UserDataProvider>
+            <ProactiveProvider>
+              <Header />
+              <main>{children}</main>
+            </ProactiveProvider>
+          </UserDataProvider>
         </NextIntlClientProvider>
       </body>
     </html>

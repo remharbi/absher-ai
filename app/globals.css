@@ -42,3 +42,45 @@
 .icon-sabaq {
   background-position: -53px -645px;
 }
+
+/* Announcement marquee animation */
+@keyframes announcement-marquee-rtl {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(51%);
+  }
+}
+
+@keyframes announcement-marquee-ltr {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-51%);
+  }
+}
+
+.announcement-marquee {
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.announcement-marquee span {
+  display: inline-block;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.announcement-marquee[data-direction="rtl"] span {
+  animation-name: announcement-marquee-rtl;
+  padding-right: 100%;
+}
+
+.announcement-marquee[data-direction="ltr"] span {
+  animation-name: announcement-marquee-ltr;
+  padding-left: 100%;
+}

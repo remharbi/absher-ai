@@ -1,10 +1,9 @@
 "use client";
 
-import { useTranslations } from "next-intl";
-import { dashboardData } from "@/lib/userData";
+import { useTranslations, useLocale } from "next-intl";
 import TravelsList from "@/components/Travels/TravelsList";
-
-const sidebarLinks = [{ key: "electronicServices", active: true }, { key: "authorization" }, { key: "surveys" }, { key: "payments" }];
+import { useProactiveRecommendations } from "@/components/ProactiveProvider/ProactiveProvider";
+import { useUserData } from "@/components/UserDataProvider/UserDataProvider";
 
 const quickServices = ["myServices", "vehicles", "familyMembers", "workers", "appointments"];
 
@@ -23,20 +22,58 @@ const contactItems = ["contact", "corruption", "faqs", "channels", "idActivation
 const linkItems = ["interior", "nationalPortal", "aiStrategy", "openData", "eParticipation", "consultation"];
 
 export default function Home() {
+  const locale = useLocale();
   const t = useTranslations("homepage");
   const normalizeKey = (value) => value.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+  const { recommendations: proactiveActions, error: proactiveErrorKey, loading: proactiveLoading } = useProactiveRecommendations();
+  const sabaqPath = `/${locale}/sabaq`;
+  const { userData } = useUserData();
+  const dashboardData = userData || { active_services: [], past_travels: [], violations: [] };
+  const activeServices = dashboardData.active_services || dashboardData.activeServices || [];
+  const pastTravels = dashboardData.past_travels || dashboardData.pastTravels || [];
+  const violations = dashboardData.violations || [];
 
+  
   return (
     <div className="min-h-screen bg-[#f5f6f7] pb-16">
       <section className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
+        <div className="mb-6 rounded-lg border border-emerald-100 bg-white p-4 shadow-sm">
+          <div className="flex items-center justify-between">
+            <h2 className="text-lg font-bold text-slate-800">{t("proactive.title")}</h2>
+            <span className="text-xs font-semibold text-emerald-700">{t("proactive.badge")}</span>
+          </div>
+          {proactiveErrorKey ? (
+            <p className="mt-2 text-sm text-red-600">{t(proactiveErrorKey)}</p>
+          ) : (
+            <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {proactiveLoading && proactiveActions.length === 0 ? (
+                <p className="text-sm text-slate-600">{t("proactive.loading")}</p>
+              ) : (
+                proactiveActions.map((item, idx) => {
+                  const title = locale === "ar" ? item.title_ar || item.title_en || item.title : item.title_en || item.title_ar || item.title;
+                  const reason =
+                    locale === "ar" ? item.reason_ar || item.reason_en || item.reason : item.reason_en || item.reason_ar || item.reason;
+                  return (
+                    <div key={idx} className="rounded-lg border border-emerald-100 bg-emerald-50 px-4 py-3 text-sm text-emerald-900">
+                      <p className="font-semibold">{title}</p>
+                      <p className="text-xs text-emerald-800">{reason}</p>
+                      <a href={sabaqPath} className="mt-3 bg-emerald-100 px-3 py-2 hover:bg-white rounded-sm cursor-pointer inline-flex text-xs font-semibold text-emerald-700 hover:text-emerald-800">
+                        {t("proactive.ctaAction")} 
+                      </a>
+                    </div>
+                  );
+                })
+              )}
+            </div>
+          )}
+        </div>
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center justify-between">
               <h2 className="text-lg font-bold text-slate-800">{t("dashboard.activeServices.title")}</h2>
-              <span className="text-xs font-semibold text-green-700">{t("dashboard.activeServices.statusSynced")}</span>
             </div>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
-              {dashboardData.activeServices.map((service) => (
+              {activeServices.map((service) => (
                 <article key={service.service_id} className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
                   <div className="flex items-start justify-between gap-3">
                     <div>
@@ -79,7 +116,7 @@ export default function Home() {
             <div className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
               <h2 className="text-lg font-bold text-slate-800">{t("dashboard.violations.title")}</h2>
               <div className="mt-3 space-y-3">
-                {dashboardData.violations.map((v) => (
+                {violations.map((v) => (
                   <div key={v.violation_id} className="rounded-md border border-amber-200 bg-amber-50 px-4 py-3">
                     <div className="flex items-center justify-between">
                       <p className="text-sm font-semibold text-amber-900">{t(`dashboard.violations.types.${normalizeKey(v.type)}`)}</p>
@@ -103,7 +140,7 @@ export default function Home() {
 
               <div className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
                 <h2 className="text-lg font-bold text-slate-800">{t("dashboard.travels.title")}</h2>
-                <TravelsList travels={dashboardData.pastTravels} />
+                <TravelsList travels={pastTravels} />
               </div>
           </div>
         </div>

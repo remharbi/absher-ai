@@ -12,26 +12,49 @@ import { useLocale } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import AnnouncementBar from "./AnnouncementBar";
+import { useProactiveRecommendations } from "../ProactiveProvider/ProactiveProvider";
 
 export default function Header() {
   const locale = useLocale();
-  const t = useTranslations("navList");
+  const t = useTranslations("navigation");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathSegments = usePathname().split("/").filter(Boolean);
   const currentPath = pathSegments[1];
   const isSabaq = currentPath === "sabaq";
   const [navExpanded, setNavExpanded] = useState(!isSabaq);
   const [showAnnouncement, setShowAnnouncement] = useState(true);
+  const sabaqPath = `/${locale}/sabaq`;
+  const defaultAnnouncement =
+    locale === "ar" ? `اكتشف أحدث خدمات أبشر وإشعاراتها` : `Explore the latest Absher services and announcements`;
+  const [announcementMessage, setAnnouncementMessage] = useState(defaultAnnouncement);
+  const { recommendations, loading: proactiveLoading } = useProactiveRecommendations();
 
   useEffect(() => {
     setNavExpanded(!isSabaq);
   }, [isSabaq]);
 
+  useEffect(() => {
+    setAnnouncementMessage(defaultAnnouncement);
+  }, [defaultAnnouncement]);
+
+  useEffect(() => {
+    if (isSabaq || !showAnnouncement) return;
+    const top = recommendations?.[0];
+    if (top) {
+      const title = locale === "ar" ? top.title_ar || top.title_en || top.title : top.title_en || top.title_ar || top.title;
+      const reason = locale === "ar" ? top.reason_ar || top.reason_en || top.reason : top.reason_en || top.reason_ar || top.reason;
+      setAnnouncementMessage(reason ? `${title} — ${reason}` : title || defaultAnnouncement);
+    } else if (!proactiveLoading) {
+      setAnnouncementMessage(defaultAnnouncement);
+    }
+  }, [defaultAnnouncement, isSabaq, locale, proactiveLoading, recommendations, showAnnouncement]);
+
   return (
     <header className={`w-full shadow-md ${isSabaq ? "bg-emerald-950 text-white" : "bg-white text-neutral-900"}`}>
       <AnnouncementBar
-        message="New: Explore the latest Absher services and announcements."
+        message={announcementMessage}
         visible={showAnnouncement && !isSabaq}
+        cta={{ href: sabaqPath, label: t("goToSabaq")}}
         onClose={() => setShowAnnouncement(false)}
       />
       <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-4 sm:px-6 lg:px-10">

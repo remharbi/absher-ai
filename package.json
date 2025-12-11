@@ -12,11 +12,13 @@
     "@headlessui/react": "^2.2.9",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "dotenv": "^17.2.3",
     "gsap": "^3.14.1",
     "lucide-react": "^0.560.0",
     "next": "16.0.7",
     "next-intl": "^4.5.8",
     "ogl": "^1.0.11",
+    "openai": "^6.10.0",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "tailwind-merge": "^3.4.0"
