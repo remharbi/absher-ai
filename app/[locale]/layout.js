@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
 import localFont from "next/font/local";
-
+import { headers } from "next/headers";
 import "@/app/globals.css";
 import Header from "@/components/Header/Header";
 
@@ -44,7 +44,6 @@ export async function generateMetadata({ params }) {
 
 export default async function RootLayout({ children, params }) {
   const { locale } = await params;
-
   if (!hasLocale(routing.locales, locale)) notFound();
 
   let messages;
@@ -53,6 +52,7 @@ export default async function RootLayout({ children, params }) {
   } catch {
     notFound();
   }
+
   return (
     <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} suppressHydrationWarning className="">
       <body
