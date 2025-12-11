@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Orb from "@/components/Orb/Orb";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
+import Recommendation from "@/components/Recommendation.js/Recommendation";
 
 export default function page() {
   const t = useTranslations("sabaq");
@@ -43,7 +44,7 @@ export default function page() {
               hideContent ? "opacity-100" : "opacity-0 pointer-events-none"
             }`}>
             <p className="rounded-lg border border-emerald-700/60 bg-emerald-800/70 px-6 py-3 text-lg font-semibold text-emerald-100">
-              Placeholder content coming soon.
+              <Recommendation />
             </p>
           </div>
         </div>

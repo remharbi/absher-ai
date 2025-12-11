@@ -42,6 +42,70 @@
     "plateAuction": "مزاد اللوحات الإلكتروني",
     "serviceSuspension": "تعليق الخدمات ومنع السفر"
   },
+  "dashboard": {
+    "activeServices": {
+      "title": "الخدمات الفعالة",
+      "statusSynced": "تمت مزامنة الحالة",
+      "labels": {
+        "id": "المعرف",
+        "expiry": "تاريخ الانتهاء",
+        "daysLeft": "الأيام المتبقية",
+        "licenseType": "نوع الرخصة"
+      },
+      "status": {
+        "valid": "سارية",
+        "pending": "معلقة"
+      },
+      "categories": {
+        "travel": "السفر",
+        "vehicle": "المركبات",
+        "identity": "الهوية"
+      },
+      "services": {
+        "PR-201": "جواز السفر",
+        "DL-101": "رخصة القيادة",
+        "ID-001": "الهوية الوطنية"
+      }
+    },
+    "violations": {
+      "title": "المخالفات",
+      "labels": {
+        "id": "المعرف",
+        "date": "التاريخ",
+        "amount": "المبلغ"
+      },
+      "status": {
+        "unpaid": "غير مدفوعة",
+        "paid": "مدفوعة"
+      },
+      "types": {
+        "speeding": "تجاوز السرعة"
+      }
+    },
+    "travels": {
+      "title": "الرحلات السابقة",
+      "labels": {
+        "airline": "شركة الطيران",
+        "entry": "الدخول",
+        "exit": "الخروج",
+        "duration": "المدة",
+        "days": "أيام",
+        "method": "طريقة السفر"
+      },
+      "methods": {
+        "air": "جواً"
+      },
+      "purposes": {
+        "leisure": "ترفيه",
+        "vacation": "إجازة",
+        "study-training": "دراسة / تدريب"
+      },
+      "actions": {
+        "showMore": "عرض كل الرحلات",
+        "showLess": "عرض أقل"
+      }
+    }
+  },
   "footer": {
     "socialMedia": "وسائل التواصل الاجتماعي",
     "social": {

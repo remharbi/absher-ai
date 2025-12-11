@@ -42,6 +42,70 @@
     "plateAuction": "Online Plate Auction",
     "serviceSuspension": "Service Suspension and Travel Restrictions"
   },
+  "dashboard": {
+    "activeServices": {
+      "title": "Active Services",
+      "statusSynced": "Status synced",
+      "labels": {
+        "id": "ID",
+        "expiry": "Expiry",
+        "daysLeft": "Days left",
+        "licenseType": "License type"
+      },
+      "status": {
+        "valid": "Valid",
+        "pending": "Pending"
+      },
+      "categories": {
+        "travel": "Travel",
+        "vehicle": "Vehicle",
+        "identity": "Identity"
+      },
+      "services": {
+        "PR-201": "Passport",
+        "DL-101": "Driver License",
+        "ID-001": "National ID"
+      }
+    },
+    "violations": {
+      "title": "Violations",
+      "labels": {
+        "id": "ID",
+        "date": "Date",
+        "amount": "Amount"
+      },
+      "status": {
+        "unpaid": "Unpaid",
+        "paid": "Paid"
+      },
+      "types": {
+        "speeding": "Speeding"
+      }
+    },
+    "travels": {
+      "title": "Past Travels",
+      "labels": {
+        "airline": "Airline",
+        "entry": "Entry",
+        "exit": "Exit",
+        "duration": "Duration",
+        "days": "days",
+        "method": "Method"
+      },
+      "methods": {
+        "air": "Air"
+      },
+      "purposes": {
+        "leisure": "Leisure",
+        "vacation": "Vacation",
+        "study-training": "Study / Training"
+      },
+      "actions": {
+        "showMore": "Show all trips",
+        "showLess": "Show fewer"
+      }
+    }
+  },
   "footer": {
     "socialMedia": "Social Media",
     "social": {
