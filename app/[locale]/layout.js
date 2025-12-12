@@ -4,11 +4,11 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
 import localFont from "next/font/local";
-import { headers } from "next/headers";
 import "@/app/globals.css";
 import Header from "@/components/Header/Header";
 import { ProactiveProvider } from "@/components/ProactiveProvider/ProactiveProvider";
 import { UserDataProvider } from "@/components/UserDataProvider/UserDataProvider";
+import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -65,7 +65,10 @@ export default async function RootLayout({ children, params }) {
           <UserDataProvider>
             <ProactiveProvider>
               <Header />
-              <main>{children}</main>
+              <main>
+                {children}
+                <Analytics />
+              </main>
             </ProactiveProvider>
           </UserDataProvider>
         </NextIntlClientProvider>
