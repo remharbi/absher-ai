@@ -19,7 +19,7 @@ export default function page() {
   const [planError, setPlanError] = useState("");
 
   useEffect(() => {
-    const timer = setTimeout(() => setHideContent(true), 2000);
+    const timer = setTimeout(() => setHideContent(true), 20000);
     return () => clearTimeout(timer);
   }, []);
 

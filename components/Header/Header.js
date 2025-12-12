@@ -13,6 +13,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import AnnouncementBar from "./AnnouncementBar";
 import { useProactiveRecommendations } from "../ProactiveProvider/ProactiveProvider";
+import Sabaq from "@/public/sabaq.png";
 
 export default function Header() {
   const locale = useLocale();
@@ -24,10 +25,15 @@ export default function Header() {
   const [navExpanded, setNavExpanded] = useState(!isSabaq);
   const [showAnnouncement, setShowAnnouncement] = useState(true);
   const sabaqPath = `/${locale}/sabaq`;
-  const defaultAnnouncement =
-    locale === "ar" ? `اكتشف أحدث خدمات أبشر وإشعاراتها` : `Explore the latest Absher services and announcements`;
+  const defaultAnnouncement = locale === "ar" ? `اكتشف أحدث خدمات أبشر وإشعاراتها` : `Explore the latest Absher services and announcements`;
   const [announcementMessage, setAnnouncementMessage] = useState(defaultAnnouncement);
   const { recommendations, loading: proactiveLoading } = useProactiveRecommendations();
+
+  useEffect(() => {
+    if (isSabaq) {
+      setIsMenuOpen(false);
+    }
+  }, [isSabaq]);
 
   useEffect(() => {
     setNavExpanded(!isSabaq);
@@ -54,26 +60,27 @@ export default function Header() {
       <AnnouncementBar
         message={announcementMessage}
         visible={showAnnouncement && !isSabaq}
-        cta={{ href: sabaqPath, label: t("goToSabaq")}}
+        cta={{ href: sabaqPath, label: t("goToSabaq") }}
         onClose={() => setShowAnnouncement(false)}
       />
       <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-4 sm:px-6 lg:px-10">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-4">
-            <button
-              type="button"
-              className="flex h-11 w-11 items-center justify-center rounded-md border border-slate-200 bg-white text-slate-700 shadow-sm hover:bg-green-50 md:hidden"
-              aria-expanded={isMenuOpen}
-              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-              onClick={() => setIsMenuOpen((open) => !open)}>
-              <span className="sr-only">{isMenuOpen ? "Close menu" : "Open menu"}</span>
-              <div className="flex flex-col gap-1">
-                <span className={`block h-0.5 w-6 rounded-full bg-slate-700 transition ${isMenuOpen ? "translate-y-[5px] rotate-45" : ""}`} />
-                <span className={`block h-0.5 w-6 rounded-full bg-slate-700 transition ${isMenuOpen ? "opacity-0" : ""}`} />
-                <span className={`block h-0.5 w-6 rounded-full bg-slate-700 transition ${isMenuOpen ? "-translate-y-[5px] -rotate-45" : ""}`} />
-              </div>
-            </button>
-
+            {!isSabaq ? (
+              <button
+                type="button"
+                className="flex h-11 w-11 items-center justify-center rounded-md border border-slate-200 bg-white text-slate-700 shadow-sm hover:bg-green-50 md:hidden"
+                aria-expanded={isMenuOpen}
+                aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                onClick={() => setIsMenuOpen((open) => !open)}>
+                <span className="sr-only">{isMenuOpen ? "Close menu" : "Open menu"}</span>
+                <div className="flex flex-col gap-1">
+                  <span className={`block h-0.5 w-6 rounded-full bg-slate-700 transition ${isMenuOpen ? "translate-y-[5px] rotate-45" : ""}`} />
+                  <span className={`block h-0.5 w-6 rounded-full bg-slate-700 transition ${isMenuOpen ? "opacity-0" : ""}`} />
+                  <span className={`block h-0.5 w-6 rounded-full bg-slate-700 transition ${isMenuOpen ? "-translate-y-[5px] -rotate-45" : ""}`} />
+                </div>
+              </button>
+            ) : null}
             <div className="flex items-end gap-2">
               <div className="flex items-end">
                 <Image className={`${isSabaq ? "filter brightness-0 invert" : ""}`} src={Vision2030} alt="Vision 2030 Logo" height={70} />
@@ -84,7 +91,9 @@ export default function Header() {
               </div>
             </div>
           </div>
-
+          <div className={`flex justify-center sm:justify-end ${isSabaq ? "filter brightness-0 invert" : ""}`}>
+            <Image src={Sabaq} alt="Sabaq Logo" height={80} />
+          </div>
           <div className={`flex justify-center sm:justify-end ${isSabaq ? "filter brightness-0 invert" : ""}`}>
             <Image src={MOI} alt="Ministry of Interior Logo" width={80} height={80} />
           </div>
@@ -108,7 +117,7 @@ export default function Header() {
                   </span>
                 ) : null}
 
-                <div className={`${navItem.icon} ${navItem.name != "sabaq"? "filter brightness-0":""} h-16 w-16`} />
+                <div className={`${navItem.icon} ${navItem.name != "sabaq" ? "filter brightness-0" : ""} h-16 w-16`} />
                 <p className="text-center">{t(`${navItem.name}`)}</p>
               </Link>
             ))}
